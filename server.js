@@ -1,22 +1,37 @@
 const fs = require("fs").promises;
 const path = require("path");
-
 const express = require("express");
-
 const app = express();
+
+/** @typedef {string} RecipeFileContents */
+/** @typedef {string} RecipeObject */
 
 /**
  * @param {string} filename
- * @returns {string} */
+ * @returns {RecipeFileContents} */
 async function find(filename) {
   const pathTo = path.resolve(__dirname, "recipes", filename + ".recipe");
-  return await (await fs.readFile(pathTo)).toString();
+  const buff = await fs.readFile(pathTo);
+  return await buff.toString();
+}
+
+/**
+ * @param {RecipeFileContents} contents
+ * @returns {RecipeObject} */
+function parse(contents) {
+  const data = { title: "", tags: [], ingredients: [], instructions: [] };
+  const lines = contents.split("\n");
+  for (const line of lines) {
+  }
+
+  return data;
 }
 
 app.get("/:filename", async function handler(req, res) {
   try {
     const file = await find(req.params.filename);
-    res.status(200).send(file);
+    const json = parse(file);
+    res.status(200).send(json);
   } catch (error) {
     res.send(404);
   }
