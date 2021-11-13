@@ -35,7 +35,7 @@ function parse(contents) {
       case "meta":
         const [key, value] = line.split(/\s*=\s*/);
         if (key === "title") {
-          data.title = value;
+          data.title = value.slice(1, -1);
         } else if (key === "tags") {
           data.tags.push(...value.split(/\s*,\s*/));
         }
