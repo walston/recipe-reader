@@ -10,8 +10,8 @@ app.get("/:filename", async function handler(req, res) {
     const json = parse(file);
     res.status(200).send(json);
   } catch (error) {
-    console.error(error);
-    res.sendStatus(404);
+    if (error instanceof parse.ParseError) return res.sendStatus(500);
+    return res.sendStatus(404);
   }
 });
 
