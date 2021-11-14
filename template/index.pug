@@ -3,3 +3,23 @@ html
 	head
 		title= title
 	body
+		header
+			h1= title
+			figure
+				picture
+					source
+				figcaption= picAltText
+		section#prolog(tabindex="1")= prolog
+		section#ingredients
+			h2 Ingredients
+			ul
+				- for (const { amount, description, tag } of ingredients)
+					li(data-tag=tag)
+						if amount
+							span.amount= amount
+						= description
+		section#instructions
+			h2 Instructions
+			ol
+				- for (const instruction of instructions)
+					li= instruction

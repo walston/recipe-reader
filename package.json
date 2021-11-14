@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "nodemon server/builder.js",
+    "build": "node server/builder.js",
+    "dev:build": "nodemon -e js,pug,recipe server/builder.js",
     "start": "nodemon server/index.js"
   },
   "keywords": [],

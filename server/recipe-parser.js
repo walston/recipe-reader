@@ -27,7 +27,7 @@ function parse(contents) {
         currentSection = nextSection;
         continue;
       } else {
-        throw new ParseError(`unknown section "${section}"`);
+        throw new ParseError(`unknown section "${nextSection}"`);
       }
     }
 
