@@ -4,12 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "build": "nodemon server/builder.js",
     "start": "nodemon server/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pug": "^3.0.2"
   }
 }
