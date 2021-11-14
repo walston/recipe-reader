@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
-const { getFile, getIndex } = require("./find");
-const parse = require("./parse");
+const { getFile, getIndex } = require("./file-access");
+const parse = require("./recipe-parser");
 
 app.get("/", async function (req, res) {
   try {
